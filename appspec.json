@@ -1,0 +1,17 @@
+{
+  "version": 0.0,
+  "Resources": [
+    {
+      "TargetService": {
+        "Type": "AWS::ECS::Service",
+        "Properties": {
+          "TaskDefinition": "arn:aws:ecs:us-west-2:600878681787:task-definition/phptaskdef:2",
+          "LoadBalancerInfo": {
+            "ContainerName": "php-container",
+            "ContainerPort": 80
+          }
+        }
+      }
+    }
+  ]
+}

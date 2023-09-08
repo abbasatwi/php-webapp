@@ -2,10 +2,10 @@ pipeline {
     agent any
     environment {
         registryCredential = 'ecr:us-west-2:awscreds'
-        appRepository = "600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repos"
+        appRepository = "600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-jenkins"
         ecrRepository = "https://600878681787.dkr.ecr.us-west-2.amazonaws.com"
         cluster = "PHPcluster"
-        service = "php-ECS-task"
+        service = "jenkins-service"
     }
   stages {
     stage('Fetch code'){
