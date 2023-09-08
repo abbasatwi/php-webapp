@@ -10,4 +10,5 @@ RUN cat /etc/apache2/mods-available/dir.conf
 RUN cat /etc/apache2/mods-enabled/dir.conf
 RUN cat /etc/apache2/sites-available/000-default.conf
 RUN a2enmod dir
-
+COPY dir.conf /etc/apache2/mods-enabled/dir.conf
+COPY . /var/www/
