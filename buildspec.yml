@@ -10,29 +10,12 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t php-repos .
-      - docker tag php-repos:latest 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repos:latest
-  post_build:
-    commands:
-      - echo Pushing the Docker image to Amazon ECR...
-      - docker push 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repos:latest
-=======
-      - echo log in to Amazon ECR...
-      - aws --version
-      - echo $AWS_DEFAULT_REGION
-      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 600878681787.dkr.ecr.us-west-2.amazonaws.com
-      - REPOSITORY_URI=600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repos
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
-  build:
-    commands:
-      - echo Build started on `date`
-      - echo Building the Docker image.
-      - docker build -t $REPOSITORY_URI:latest .
+      - docker build -t php-repo-terraform .
+      - docker tag php-repo-terraform:latest 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push $REPOSITORY_URI:latest
+      - docker push 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest
       - echo write definitions file...
       - printf '[{"name":"phpcontainer","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
 >>>>>>> 36265f5a0cc0c089273810db414fd57920fdbbcf
