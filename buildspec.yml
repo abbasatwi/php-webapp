@@ -1,9 +1,7 @@
 version: 0.2
-
 phases:
   pre_build:
     commands:
-<<<<<<< HEAD
       - echo Logging in to Amazon ECR...
       - aws --version
       - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 600878681787.dkr.ecr.us-west-2.amazonaws.com
@@ -17,8 +15,6 @@ phases:
       - echo Build completed on `date`
       - docker push 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest
       - echo write definitions file...
-      - printf '[{"name":"phpcontainer","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
->>>>>>> 36265f5a0cc0c089273810db414fd57920fdbbcf
-
+      - printf '[{"name":"phpcontainer","imageUri":"%s"}]' 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest > imagedefinitions.json
 artifacts:
   files: '**/*'
