@@ -26,14 +26,14 @@
 <?php
 
   /* Connect to MySQL and select the database. */
-  $connection = mysqli_connect('php-rds-2.cbjqzwhzfwvk.us-west-2.rds.amazonaws.com', 'abbasatwi', 'abbasatwi');
+  $connection = mysqli_connect('abbas-project-db.cbjqzwhzfwvk.us-west-2.rds.amazonaws.com', 'abbasatwi', 'abbasatwi');
 
   if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
 
-  $database = mysqli_select_db($connection, 'phpdatabase');
+  $database = mysqli_select_db($connection, 'abbasprojectdatabase');
 
   /* Ensure that the EMPLOYEES table exists. */
-  VerifyEmployeesTable($connection, 'phpdatabase');
+  VerifyEmployeesTable($connection, 'abbasprojectdatabase');
 
   /* If input fields are populated, add a row to the EMPLOYEES table. */
   $employee_name = htmlentities($_POST['NAME']);
