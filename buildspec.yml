@@ -1,4 +1,8 @@
 version: 0.2
+env:
+  variables:
+    key: "value"
+    key: "value"
 phases:
   pre_build:
     commands:
@@ -8,13 +12,13 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t php-repo-terraform .
-      - docker tag php-repo-terraform:latest 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest
+      - docker build -t abbas-project-ecr .
+      - docker tag abbas-project-ecr:latest 600878681787.dkr.ecr.us-west-2.amazonaws.com/abbas-project-ecr:latest
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest
+      - docker push 600878681787.dkr.ecr.us-west-2.amazonaws.com/abbas-project-ecr:latest
       - echo write definitions file...
-      - printf '[{"name":"phpcontainer","imageUri":"%s"}]' 600878681787.dkr.ecr.us-west-2.amazonaws.com/php-repo-terraform:latest > imagedefinitions.json
+      - printf '[{"name":"abbas-project-ecs-container","imageUri":"%s"}]' 600878681787.dkr.ecr.us-west-2.amazonaws.com/abbas-project-ecr:latest > imagedefinitions.json
 artifacts:
   files: '**/*'
