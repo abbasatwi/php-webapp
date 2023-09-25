@@ -1,8 +1,8 @@
 version: 0.2
 env:
-  variables:
-    key: "value"
-    key: "value"
+  # variables:
+  #   key: "value"
+  #   key: "value"
 phases:
   pre_build:
     commands:
